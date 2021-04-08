@@ -1,8 +1,13 @@
 <?php
+session_start();
+if(!isset($_SESSION['votou']) {
 $vote = $_REQUEST['vote'];
 
 //get content of textfile
 $filename = "/tmp/poll_result.txt";
+if(!file_exists($filename)) {
+	touch($filename);
+}
 $content = file($filename);
 
 //put content in array
@@ -22,12 +27,14 @@ $insertvote = $yes."||".$no;
 $fp = fopen($filename,"w");
 fputs($fp,$insertvote);
 fclose($fp);
+$_SESSION['votou'] = "S";
+} 
 ?>
 
-<h2>Result:</h2>
+<h2>Resultado:</h2>
 <table>
 <tr>
-<td>Yes:</td>
+<td>Sim:</td>
 <td><img src="poll.gif"
 width='<?php echo(100*round($yes/($no+$yes),2)); ?>'
 height='20'>
@@ -35,7 +42,7 @@ height='20'>
 </td>
 </tr>
 <tr>
-<td>No:</td>
+<td>Nao:</td>
 <td><img src="poll.gif"
 width='<?php echo(100*round($no/($no+$yes),2)); ?>'
 height='20'>
