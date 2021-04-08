@@ -50,3 +50,4 @@ height='20'>
 </td>
 </tr>
 </table>
+<a href=index.php>Voltar</a>

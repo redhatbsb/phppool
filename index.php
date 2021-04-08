@@ -29,7 +29,7 @@ Não: <input type="radio" name="vote" value="1" onclick="getVote(this.value)">
 </div>
 <?php
 } else {
-echo "Ja votou?<a href=\"pool_vote.php\">Ver resultados</a>";
+echo "Ja votou?<a href=\"poll_vote.php\">Ver resultados</a>";
 }
 ?>
 </body>
