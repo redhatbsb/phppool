@@ -30,6 +30,12 @@ fputs($fp,$insertvote);
 fclose($fp);
 $_SESSION['votou'] = "S";
 } 
+
+$content = file($filename);
+
+//put content in array
+$array = explode("||", $content[0]);
+$yes = $array[0];
 ?>
 
 <h2>Resultado:</h2>
