@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['votou']) {
+if(!isset($_SESSION['votou'])) {
 $vote = $_REQUEST['vote'];
 
 //get content of textfile
