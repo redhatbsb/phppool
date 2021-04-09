@@ -50,28 +50,70 @@
 </head>
 
 <body>
+<?php
+$filename = "/tmp/poll_result.txt";
+$content = file($filename);
 
+//put content in array
+$array = explode("||", $content[0]);
+$yes = $array[0];
+$no = $array[1];
+if($yes == "") {
+$yes = 0;
+}
+if($no == "") {
+$no = 0;
+}
+?>
 <div id="container">
       <span id="question">What is your favorite server side language?</span>
-      <div><span>0</span><a href="">Vote</a>PHP</div>
-      <div><span>0</span><a href="">Vote</a>Ruby</div>
-      <div><span>0</span><a href="">Vote</a>Java</div>
-      <div><span>0</span><a href="">Vote</a>ASP</div>
-      <div><span>0</span><a href="">Vote</a>Perl</div>
-      <div><span>0</span><a href="">Vote</a>ColdFusion</div>
+      <div id="yes"><span id="yes"><?php echo $yes;?></span><a href="">Vote</a>Sim</div>
+      <div id="no"><span id="no"><?php echo $no;?></span><a href="">Vote</a>Não</div>
   </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
+        // Yes
+        for (let i = 1; i < <?php echo $yes;?>; i++) {
+                setTimeout(function timer() {
+                        $("#yes").animate({width: '+=100px'}, 500);
+                }, i * 100);
+        }
+
+        // No
+        for (let i = 1; i < <?php echo $no;?>; i++) {
+                setTimeout(function timer() {
+                        $("#no").animate({width: '+=100px'}, 500);
+                }, i * 100);
+        }
+
     $("#container div a").click(function() {
         $(this).parent().animate({
            width: '+=100px'
         }, 500);
 
         $(this).prev().html(parseInt($(this).prev().html()) + 1);
+
+        //alert($(this).prev().attr('id'));
+        if($(this).prev().attr('id') == "yes") {
+                getVote(1);
+        } else {
+                getVote(0);
+        }
         return false;
     });
+
+        function getVote(int) {
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("poll").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","poll_vote.php?vote="+int,true);
+  xmlhttp.send();
+}
 });
 </script>
 </html>
