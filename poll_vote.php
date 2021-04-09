@@ -31,11 +31,13 @@ fclose($fp);
 $_SESSION['votou'] = "S";
 } 
 
+$filename = "/tmp/poll_result.txt";
 $content = file($filename);
 
 //put content in array
 $array = explode("||", $content[0]);
 $yes = $array[0];
+$no = $array[1];
 ?>
 
 <h2>Resultado:</h2>
