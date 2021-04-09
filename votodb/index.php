@@ -97,9 +97,9 @@ $(document).ready(function() {
 
         //alert($(this).prev().attr('id'));
         if($(this).prev().attr('id') == "yes") {
-                getVote(1);
-        } else {
                 getVote(0);
+        } else {
+                getVote(1);
         }
         return false;
     });
