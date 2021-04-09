@@ -1,6 +1,24 @@
 <?php
 error_reporting(0);
 session_start();
+if(getenv("PERGUNTA") != "") { 
+	$pergunta = getenv("PERGUNTA");
+} else {
+	$pergunta = "Café ou Chá?";
+}
+
+if(getenv("OPCAO1") != "") { 
+	$opcao1 = getenv("OPCAO1");
+} else {
+	$opcao1 = "Café";
+}
+
+if(getenv("OPCAO2") != "") { 
+	$opcao2 = getenv("OPCAO2");
+} else {
+	$opcao2 = "Chá?";
+}
+
 ?>
 <html>
 <head>
@@ -70,9 +88,9 @@ $no = 0;
 }
 ?>
 <div id="container">
-      <span id="question">What is your favorite server side language?</span>
-      <div id="yes"><span id="yes"><?php echo $yes;?></span><a href="">Vote</a>Sim</div>
-      <div id="no"><span id="no"><?php echo $no;?></span><a href="">Vote</a>Não</div>
+      <span id="question"><?php echo $pergunta;?></span>
+      <div id="yes"><span id="yes"><?php echo $yes;?></span><a href="">Vote</a><?php echo $opcao1;?></div>
+      <div id="no"><span id="no"><?php echo $no;?></span><a href="">Vote</a><?php echo $opcao2;?></div>
   </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
