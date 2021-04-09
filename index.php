@@ -1,3 +1,7 @@
+<?php
+error_reporting(0);
+session_start();
+?>
 <html>
 <head>
 <style>
@@ -89,6 +93,9 @@ $(document).ready(function() {
         }
 
     $("#container div a").click(function() {
+	<?php
+	if(!isset($_SESSION['votou'])) {
+?>
         $(this).parent().animate({
            width: '+=100px'
         }, 500);
@@ -101,6 +108,9 @@ $(document).ready(function() {
         } else {
                 getVote(1);
         }
+<?php
+	}
+?>
         return false;
     });
 

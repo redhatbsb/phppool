@@ -1,4 +1,5 @@
 <?php
+start_session();
 $vote = $_REQUEST['vote'];
 
 //get content of textfile
@@ -25,7 +26,7 @@ $insertvote = $yes."||".$no;
 $fp = fopen($filename,"w");
 fputs($fp,$insertvote);
 fclose($fp);
-
+$_SESSION['votou'] = "S";
 $filename = "/tmp/poll_result.txt";
 $content = file($filename);
 
