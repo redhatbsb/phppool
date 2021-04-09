@@ -89,8 +89,8 @@ $no = 0;
 ?>
 <div id="container">
       <span id="question"><?php echo $pergunta;?></span>
-      <div id="yes"><span id="yes"><?php echo $yes;?></span><a href="">Vote</a><?php echo $opcao1;?></div>
-      <div id="no"><span id="no"><?php echo $no;?></span><a href="">Vote</a><?php echo $opcao2;?></div>
+      <div id="yes"><span id="yes"><?php echo $yes;?></span><a href="">Votar</a><?php echo $opcao1;?></div>
+      <div id="no"><span id="no"><?php echo $no;?></span><a href="">Votar</a><?php echo $opcao2;?></div>
   </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
