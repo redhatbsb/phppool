@@ -91,6 +91,7 @@ $no = 0;
       <span id="question"><?php echo $pergunta;?></span>
       <div id="yes"><span id="yes"><?php echo $yes;?></span><a href="">Votar</a><?php echo $opcao1;?></div>
       <div id="no"><span id="no"><?php echo $no;?></span><a href="">Votar</a><?php echo $opcao2;?></div>
+	<input type="hidden" name="votou" id="votou" value="N">
   </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -111,6 +112,7 @@ $(document).ready(function() {
         }
 
     $("#container div a").click(function() {
+	if($("#votou").val() == "N") {
 	<?php
 	if(!isset($_SESSION['votou'])) {
 ?>
@@ -126,9 +128,11 @@ $(document).ready(function() {
         } else {
                 getVote(1);
         }
+	$("#votou").val("S");
 <?php
 	}
 ?>
+	}
         return false;
     });
 
