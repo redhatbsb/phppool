@@ -49,7 +49,7 @@
 </style>
 </head>
 
-<body>
+<body bgcolor="#000000">
 <?php
 $filename = "/tmp/poll_result.txt";
 $content = file($filename);
